@@ -776,7 +776,7 @@ func TestGetMaxAPIVersionServer(t *testing.T) {
 		t.Fatalf("unexpected error: %v", err)
 	}
 
-	maxVer, err := c.GetMaxAPIVersion()
+	maxVer, err := GetMaxAPIVersion(c)
 	if err != nil {
 		t.Fatalf("unexpected error: %v", err)
 	}
@@ -808,7 +808,7 @@ func TestGetMaxAPIVersionClient(t *testing.T) {
 		t.Fatalf("unexpected error: %v", err)
 	}
 
-	maxVer, err := c.GetMaxAPIVersion()
+	maxVer, err := GetMaxAPIVersion(c)
 	if err != nil {
 		t.Fatalf("unexpected error: %v", err)
 	}

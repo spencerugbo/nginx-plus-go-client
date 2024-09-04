@@ -616,7 +616,7 @@ func versionSupported(n int) bool {
 }
 
 // GetMaxAPIVersion returns the maximum API version supported by the server and the client.
-func (client *NginxClient) GetMaxAPIVersion() (int, error) {
+func GetMaxAPIVersion(client *NginxClient) (int, error) {
 	serverVersions, err := client.getAPIVersions(client.httpClient, client.apiEndpoint)
 	if err != nil {
 		return 0, fmt.Errorf("failed to get max API version: %w", err)
@@ -664,6 +664,10 @@ func (client *NginxClient) getAPIVersions(httpClient *http.Client, endpoint stri
 	}
 
 	return &vers, nil
+}
+
+func (client *NginxClient) SetAPIVersion(apiVersion int) {
+	client.apiVersion = apiVersion
 }
 
 func createResponseMismatchError(respBody io.ReadCloser) *internalError {
